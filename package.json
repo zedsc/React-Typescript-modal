@@ -3,13 +3,18 @@
   "version": "0.1.0",
   "description": "basic Typescript customizable modal for React",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "files": [
     "dist",
     "README.md"
   ],
   "private": false,
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://github.com/zedsc/React-Typescript-modal",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zedsc/React-Typescript-modal"
+  },
   "devDependencies": {
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
