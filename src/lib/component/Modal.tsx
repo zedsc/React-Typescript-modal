@@ -1,80 +1,86 @@
 import React, { ReactNode } from "react";
-import { useEffect } from "react";
-import styles from "./modal.module.css";
+import {
+  StyledBox,
+  StyledBtn,
+  StyledContent,
+  StyledFooter,
+  StyledHeader,
+  StyledModal,
+  StyledTitle,
+} from "./modal.styled";
 
 type ModalProps = {
-  srDisplay?: boolean;
+  showModal: boolean | undefined;
+  hideModal: React.MouseEventHandler<HTMLButtonElement>;
+  srOnly?: boolean;
   title?: string;
   content?: string | ReactNode;
   btnContent?: string | ReactNode;
+  modalStyle?: object;
+  boxStyle?: object;
   headerStyle?: object;
   titleStyle?: object;
-  boxStyle?: object;
-  modalStyle?: object;
   contentStyle?: object;
   footerStyle?: object;
   btnStyle?: object;
-  showModal: boolean | undefined;
-  hideModal: React.MouseEventHandler<HTMLButtonElement>;
+  modalClassName?: string;
+  boxClassName?: string;
+  headerClassName?: string;
+  titleClassName?: string;
+  contentClassName?: string;
+  footerClassName?: string;
+  btnClassName?: string;
 };
 
 const Modal = ({
-  srDisplay,
+  srOnly,
   showModal,
   hideModal,
   title,
   content,
   btnContent,
+  modalStyle,
+  boxStyle,
   headerStyle,
   titleStyle,
-  boxStyle,
-  modalStyle,
   contentStyle,
   footerStyle,
   btnStyle,
+  modalClassName,
+  boxClassName,
+  headerClassName,
+  titleClassName,
+  contentClassName,
+  footerClassName,
+  btnClassName,
 }: ModalProps) => {
-  const [isSrOnly, setIsSrOnly] = React.useState<boolean | undefined>(true);
-  const [titleClass, setTitleClass] = React.useState<string>(
-    styles.modalTitle + " " + styles.srOnly
-  );
-  const [headerClass, setHeaderClass] = React.useState<string>(
-    styles.modalHeader + " " + styles.srOnly
-  );
-
-  useEffect(() => {
-    setIsSrOnly(srDisplay);
-    if (isSrOnly === false) {
-      setTitleClass(styles.modalTitle);
-      setHeaderClass(styles.modalHeader);
-    } else {
-      setTitleClass(styles.modalTitle + " " + styles.srOnly);
-      setHeaderClass(styles.modalHeader + " " + styles.srOnly);
-    }
-  }, [isSrOnly, srDisplay]);
-
   return showModal ? (
     <>
-      <div className={styles.modal} style={modalStyle}>
-        <div className={styles.modalBox} style={boxStyle}>
-          <header className={headerClass} style={headerStyle}>
-            <h4 className={titleClass} style={titleStyle}>
+      <StyledModal className={modalClassName} style={modalStyle}>
+        <StyledBox className={boxClassName} style={boxStyle}>
+          <StyledHeader className={headerClassName} style={headerStyle}>
+            <StyledTitle
+              className={titleClassName}
+              style={titleStyle}
+              isSrOnly={srOnly}
+            >
               {title}
-            </h4>
-          </header>
-          <div className={styles.modalBody} style={contentStyle}>
+            </StyledTitle>
+          </StyledHeader>
+          <StyledContent className={contentClassName} style={contentStyle}>
             {content}
-          </div>
-          <footer className={styles.modalFooter} style={footerStyle}>
-            <button
-              className={styles.btnModal}
+          </StyledContent>
+          <StyledFooter className={footerClassName} style={footerStyle}>
+            <StyledBtn
+              className={btnClassName}
               style={btnStyle}
               onClick={hideModal}
             >
               {btnContent}
-            </button>
-          </footer>
-        </div>
-      </div>
+            </StyledBtn>
+          </StyledFooter>
+        </StyledBox>
+      </StyledModal>
     </>
   ) : (
     <></>

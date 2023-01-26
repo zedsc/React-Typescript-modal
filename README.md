@@ -26,14 +26,29 @@ Required props:
 
 Optional props:
 
-- `srDisplay`: boolean to set title and header visibility
+- `srOnly`: boolean to set title and header visibility
 - `title`: string to add title
 - `content`: string or ReactNode to add content
 - `btnContent`: string or ReactNode to add button content
+
+### Customization/styling
+
+With classnames:
+
+- `modalClassName`: custom wrapper (including background effects) with your own classnames
+- `boxClassName`: custom container with your own classnames
+- `headerClassName`: custom header with your own classnames
+- `titleClassName`: custom title with your own classnames
+- `contentClassName`: custom modal content with your own classnames
+- `footerClassName`: custom footer with your own classnames
+- `btnClassName`: custom button with your own classnames
+
+With inline styles:
+
+- `modalStyle`: object with css styles to custom wrapper (including background effects)
+- `boxStyle`: object with css styles to custom container
 - `headerStyle`: object with css styles to custom header
 - `titleStyle`: object with css styles to custom title
-- `boxStyle`: object with css styles to custom container
-- `modalStyle`: object with css styles to custom wrapper including background effects
 - `contentStyle`: object with css styles to custom content
 - `footerStyle`: object with css styles to custom footer
 - `btnStyle`: object with css styles to custom button
@@ -53,6 +68,38 @@ const YourComponent = () => {
         content="Your modal content"
         btnContent="Next ➡ "
         hideModal={() => setShow(false)}
+      />
+    </>
+  );
+};
+
+export default YourComponent;
+```
+
+### Overriding existing styles
+
+If styling with classnames doesn't seem to work properly, you can try to bump specificity as follow:
+
+```css
+.yourClassName.yourClassName {
+  background-color: blue;
+}
+```
+
+```jsx
+const YourComponent = () => {
+  const [show, setShow] = React.useState<boolean>();
+
+  return (
+    <>
+      <button onClick={() => setShow(true)}>Show modal</button>
+      <Modal
+        showModal={show}
+        title="Your modal title"
+        content="Your modal content"
+        btnContent="Next ➡ "
+        hideModal={() => setShow(false)}
+        btnClassName="yourClassName"
       />
     </>
   );
