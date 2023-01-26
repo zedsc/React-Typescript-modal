@@ -17,6 +17,7 @@ export const StyledModal = styled.div`
   pointer-events: none;
   opacity: 1;
   pointer-events: visible;
+  z-index: 999;
 `;
 
 export const StyledBox = styled.div`
