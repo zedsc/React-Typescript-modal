@@ -1,16 +1,21 @@
 {
   "compilerOptions": {
+    "module": "CommonJS",
     "esModuleInterop": true,
     "target": "es2015",
     "declaration": true,
     "jsx": "react",
-    "module": "ESNext",
     "declarationDir": "dist",
-    "sourceMap": true,
     "outDir": "dist",
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "emitDeclarationOnly": true
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "strict": false
   },
   "include": ["src/**/*"]
 }
